@@ -43,7 +43,7 @@ public class OTP {
 		final int secret_len = base32_secret.length;
 		final int desired_secret_len = (secret_len / 8) * 5;
 		
-		if(this.bits % 8 != 0)
+		if (this.bits % 8 != 0)
 			throw new HMACGenerationError("generate `this.bits` must be divisble by 8 (got " + this.bits + ")");
 		
 		final int bit_size = this.bits / 8;
@@ -52,7 +52,7 @@ public class OTP {
 		final byte[] byte_secret = this.byte_secret(secret_len, desired_secret_len + 1);
 		final byte[] hmac = this.algo.encrypt(byte_secret, byte_string);
 		
-		if(hmac == null)
+		if (hmac == null)
 			throw new HMACGenerationError("generate `hmac` returned null from supplied decrypt function");
 		
 		final int offset = (hmac[bit_size - 1] & 0xF);
@@ -65,11 +65,11 @@ public class OTP {
 			) % (int) Math.pow(10, this.digits);
 		
 		if (out != null) {
-			final byte[] data = Integer.toString(code).getBytes(StandardCharsets.US_ASCII);
+			final String data = this.ensure_padding(code);
 			System.arraycopy(
-				data, 0,
+				data.getBytes(StandardCharsets.US_ASCII), 0,
 				out, 0,
-				data.length);
+				data.length());
 		}
 		
 		return code;
@@ -106,7 +106,7 @@ public class OTP {
 				if (offset < 0)
 					out_str[i*5+octet+1] = (byte)(-(8 + offset) > 0 ? n >> -(8 + offset) : n << (8 + offset));
 			}
-			if(n < 5)
+			if (n < 5)
 				break;
 		}
 		return out_str;
@@ -121,13 +121,19 @@ public class OTP {
 	
 	public byte[] random_base32(int len, byte[] chars) {
 		len = len > 0 ? len : 16;
-		if(len % 8 != 0)
-			throw new BASE32FormatError("byte_secret `len` must be divisble by 8 (got " + len + ")");
+		if (len % 8 != 0)
+			throw new BASE32FormatError("random_base32 `len` must be divisble by 8 (got " + len + ")");
 		
 		final byte[] bytes = new byte[len];
 		for (int i=0; i<len; i++)
 			bytes[i] = chars[random.nextInt(Integer.MAX_VALUE) % 32];
 		return bytes;
+	}
+	
+	public String ensure_padding(int input) {
+		final String s_input = String.valueOf(input);
+		return (new String(new char[this.digits]).replace("\0", "0"))
+					.substring(s_input.length()) + s_input;
 	}
 	
 	public Random getRandom() {

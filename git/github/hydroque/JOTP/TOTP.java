@@ -14,7 +14,7 @@ public class TOTP extends OTP {
 	
 	public boolean compare(int key, int increment, long for_time) {
 		return this.compare(
-			Integer.toString(key).getBytes(StandardCharsets.US_ASCII),
+			super.ensure_padding(key).getBytes(StandardCharsets.US_ASCII),
 			increment,
 			for_time);
 	}
@@ -23,10 +23,9 @@ public class TOTP extends OTP {
 		final byte[] time_str = new byte[super.digits];
 		this.at(for_time, increment, time_str);
 		
-		for (int i=0; i<key.length; i++) {
+		for (int i=0; i<key.length; i++)
 			if (i > time_str.length || key[i] != time_str[i])
 				return false;
-		}
 		return true;
 	}
 	

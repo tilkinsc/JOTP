@@ -117,7 +117,7 @@ public class Main {
 		System.out.println("hdata.getBase32Secret(): `" + new String(hdata.getBase32Secret(), StandardCharsets.US_ASCII) + "`");
 		System.out.println("// hotp hdata //\n");
 		
-		System.out.println("Current Time: `" + (System.currentTimeMillis()/100) + "`");
+		System.out.println("Current Time: `" + (System.currentTimeMillis()/1000) + "`");
 		
 		
 		////////////////////////////////////////////////////////////////

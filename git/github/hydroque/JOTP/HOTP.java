@@ -13,7 +13,7 @@ public class HOTP extends OTP {
 	
 	public boolean compare(int key, int counter) {
 		return this.compare(
-			Integer.toString(key).getBytes(StandardCharsets.US_ASCII),
+			super.ensure_padding(key).getBytes(StandardCharsets.US_ASCII),
 			counter);
 	}
 	
