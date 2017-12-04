@@ -19,7 +19,7 @@ Add the whole otp script into your project, or modify it to your namespace likin
 
 ## Description
 
-This was actually a spawn off pyotp, but I would necessarily say the code was copied. Things in python aren't in JavaScript, therefore I had to make the methods myself. However, credits will go to the module for providing a guideline of what to do. [Here](https://github.com/pyotp/pyotp) you can find pyotp and realize how different it really is.
+This was actually a spawn off pyotp, but I would necessarily say the code was copied. Things in python aren't in Java, therefore I had to make the methods myself. However, credits will go to the module for providing a guideline of what to do. [Here](https://github.com/pyotp/pyotp) you can find pyotp and realize how different it really is.
 
 
 _____________
