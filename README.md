@@ -2,7 +2,7 @@
 
 This module is part of a chain of OTP libraries all written in different languages. See https://github.com/OTPLibraries
 
-A simple One Time Password (OTP) library in JavaScript
+A simple One Time Password (OTP) library in Java
 
 Compatible with Authy and Google Authenticator. Full support for QR code url is provided.
 
@@ -14,7 +14,7 @@ No external libraries are required to use any version of JOTP.
 
 ## Configuration
 
-Add the whole otp script into your project, or modify it to your namespace liking. Leave out the index.html file, as this is a test file.
+Add the whole otp script into your project, or modify it to your namespace liking. Leave out the Main.java file, as this is a test file.
 
 
 ## Description
