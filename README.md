@@ -1,25 +1,25 @@
-# LuaOTP
+# JOTP
 
 This module is part of a chain of OTP libraries all written in different languages. See https://github.com/OTPLibraries
 
-A simple One Time Password (OTP) library in lua
+A simple One Time Password (OTP) library in JavaScript
 
 Compatible with Authy and Google Authenticator. Full support for QR code url is provided.
 
 
 ## Libraries Needed
 
-No external libraries/jars are required to use any version of JOTP.
+No external libraries are required to use any version of JOTP.
 
 
 ## Configuration
 
-Add the whole package into your project or jar it. Leave out the Main.java file, as this is a test file.
+Add the whole otp script into your project, or modify it to your namespace liking. Leave out the index.html file, as this is a test file.
 
 
 ## Description
 
-This was actually a spawn off pyotp, but I would necessarily say the code was copied. Things in python aren't in lua, therefore I had to make the methods myself. However, credits will go to the module for providing a guideline of what to do. [Here](https://github.com/pyotp/pyotp) you can find pyotp and realize how different it really is.
+This was actually a spawn off pyotp, but I would necessarily say the code was copied. Things in python aren't in JavaScript, therefore I had to make the methods myself. However, credits will go to the module for providing a guideline of what to do. [Here](https://github.com/pyotp/pyotp) you can find pyotp and realize how different it really is.
 
 
 _____________
