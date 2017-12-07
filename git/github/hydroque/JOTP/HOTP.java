@@ -22,14 +22,14 @@ public class HOTP extends OTP {
 		this.at(counter, cnt_str);
 		
 		for (int i=0; i<key.length; i++) {
-			if(i > cnt_str.length || key[i] != cnt_str[i])
+			if (i > cnt_str.length || key[i] != cnt_str[i])
 				return false;
 		}
 		return true;
 	}
 	
 	public int at(int counter) {
-		return super.generate(counter, null);
+		return this.at(counter, null);
 	}
 		
 	public int at(int counter, byte[] out) {
@@ -37,7 +37,9 @@ public class HOTP extends OTP {
 	}
 	
 	public boolean verify(int key, int counter) {
-		return this.compare(key, counter);
+		return this.verify(
+			super.ensure_padding(key).getBytes(StandardCharsets.US_ASCII),
+			counter);
 	}
 	
 	public boolean verify(byte[] key, int counter) {

@@ -40,7 +40,7 @@ public class OTP {
 	}
 	
 	public int generate(long input, byte[] out) {
-		final int secret_len = base32_secret.length;
+		final int secret_len = this.base32_secret.length;
 		final int desired_secret_len = (secret_len / 8) * 5;
 		
 		if (this.bits % 8 != 0)
@@ -90,7 +90,7 @@ public class OTP {
 				final int octet = (block*5) / 8;
 				
 				int c = 0;
-				if(i*8+block < this.base32_secret.length)
+				if (i*8+block < this.base32_secret.length)
 					c = this.base32_secret[i*8+block] & 0xFF;
 				
 				if (c >= 'A' && c <= 'Z')

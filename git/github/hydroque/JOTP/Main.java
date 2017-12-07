@@ -144,6 +144,7 @@ public class Main {
 			System.out.println("HOTP URI 2: `" + uri2 + "`\n");
 		} catch(UnsupportedEncodingException e) {
 			e.printStackTrace();
+			System.err.println("Does your toaster support ASCII?!");
 			System.exit(1);
 		}
 		
@@ -163,6 +164,7 @@ public class Main {
 			System.out.println("Generated BASE32 Secret: `" + new String(base32_new_secret, StandardCharsets.US_ASCII) + "`");
 		} catch(BASE32FormatError e) {
 			e.printStackTrace();
+			System.err.println("Did not generate a valid base32 byte array");
 			System.exit(1);
 		}
 		
@@ -179,11 +181,11 @@ public class Main {
 		
 		try {
 			// totp.now
-			int totp_err_1 = tdata.now();
+			final int totp_err_1 = tdata.now();
 			System.out.println("TOTP Generated: `" + totp_err_1 + "`");
 		
 			// totp.at
-			int totp_err_2 = tdata.at(1, 0);
+			final int totp_err_2 = tdata.at(1, 0);
 			System.out.println("TOTP Generated: `" + totp_err_2 + "`");
 			
 			
@@ -197,7 +199,7 @@ public class Main {
 			System.out.println("TOTP Verification 2: `" + tv2 + "`");
 		} catch(HMACGenerationError | BASE32FormatError e) {
 			e.printStackTrace();
-			System.err.println("TOTP Error 2");
+			System.err.println("TOTP Error 1");
 			System.exit(1);
 		}
 		
